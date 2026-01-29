@@ -1,0 +1,102 @@
+/* Page container */
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(37,99,235,0.35), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(20,184,166,0.25), transparent 40%),
+    linear-gradient(135deg, #020617, #0f172a);
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  text-align: center;
+  color: #ffffff;
+}
+
+/* Title */
+.home-title {
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #e0e7ff, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.5px;
+}
+
+/* Description */
+.home-description {
+  max-width: 700px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  color: #cbd5e1;
+  opacity: 0.95;
+}
+
+/* Action buttons container */
+.home-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* OR text */
+.home-or {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #94a3b8;
+  opacity: 0.8;
+}
+
+/* Buttons base */
+.home-btn {
+  min-width: 140px;
+  padding: 12px 26px;
+  border-radius: 999px;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Primary button */
+.home-btn.primary {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+}
+
+.home-btn.primary:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 20px 50px rgba(37,99,235,0.45);
+}
+
+/* Secondary button */
+.home-btn.secondary {
+  background: linear-gradient(135deg, #14b8a6, #0d9488);
+  color: #ffffff;
+}
+
+.home-btn.secondary:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 20px 50px rgba(20,184,166,0.45);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .home-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .home-btn {
+    width: 100%;
+    max-width: 260px;
+  }
+}

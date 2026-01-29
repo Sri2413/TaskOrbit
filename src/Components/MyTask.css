@@ -1,0 +1,151 @@
+/* Container */
+.mytask-container {
+  padding: 30px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  font-family: "Segoe UI", sans-serif;
+  box-sizing: border-box;
+}
+
+/* Title */
+.mytask-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 25px;
+}
+
+/* Empty State */
+.mytask-empty {
+  text-align: center;
+  color: #64748b;
+  font-size: 16px;
+}
+
+/* Task List */
+.mytask-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Task Card */
+.mytask-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  max-width: 100%;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-sizing: border-box;
+}
+
+.mytask-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Card Content */
+.mytask-card-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 10px;
+  word-break: break-word;
+}
+
+.mytask-card-desc {
+  font-size: 15px;
+  color: #475569;
+  margin-bottom: 20px;
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+/* Inputs */
+.mytask-input,
+.mytask-textarea {
+  width: 100%;
+  max-width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #cbd5f5;
+  font-size: 14px;
+  margin-bottom: 12px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.mytask-input:focus,
+.mytask-textarea:focus {
+  border-color: #6366f1;
+}
+
+/* Textarea fixes */
+.mytask-textarea {
+  resize: vertical;
+  min-height: 90px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Buttons */
+.mytask-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+.btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.15s ease;
+}
+
+.btn:hover {
+  transform: scale(1.03);
+}
+
+/* Button Colors */
+.edit-btn {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+.delete-btn {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+.save-btn {
+  background: #22c55e;
+  color: #ffffff;
+}
+
+.cancel-btn {
+  background: #94a3b8;
+  color: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .mytask-list {
+    grid-template-columns: 1fr;
+  }
+
+  .btn {
+    flex: 100%;
+  }
+}

@@ -1,20 +1,33 @@
 const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS },
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false,
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+  connectionTimeout: 10000, // 10s
+  greetingTimeout: 10000,
+  socketTimeout: 10000,
 });
 
 transporter.verify().then(() => console.log("Email server is ready"));
 
-const sendEmailRemainder = async (to, task) => {
-  await transporter.sendMail({
-    from: process.env.EMAIL_USER,
-    to,
-    subject: `Task Reminder: ${task.title}`,
-    text: task.description || "You have a pending task",
-  });
-  console.log("EMAIL SENT:", to);
-};
+async function sendEmailRemainder(to, task) {
+  try {
+    await transporter.sendMail({
+      from: `"TaskOrbit" <${process.env.EMAIL_USER}>`,
+      to,
+      subject: `⏰ Reminder: ${task.title}`,
+      html: `<p>${task.description}</p>`,
+    });
+    console.log("EMAIL SENT TO:", to);
+  } catch (err) {
+    console.error("EMAIL FAILED:", err.message);
+    // ❗ DO NOT THROW
+  }
+}
 
 module.exports = { sendEmailRemainder };

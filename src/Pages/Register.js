@@ -22,7 +22,7 @@ export default function Register() {
           name,
           email,
           password,
-        }
+        },
       );
       toast.success(response.data.message);
 
@@ -31,7 +31,7 @@ export default function Register() {
       setPassword("");
       setConfirmPassword("");
       setIsChecked(false);
-      navigate("/");
+      navigate("/login");
     } catch (err) {
       if (err.response && err.response.data) {
         toast.error(err.response.data.error);

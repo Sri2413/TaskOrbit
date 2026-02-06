@@ -13,11 +13,11 @@ const app = express();
 // app.use(cors());
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://task-orbit-psi.vercel.app",
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
     methods: ["GET", "POST", "PUT", "DELETE"],
-  }),
+  })
 );
 
 app.use(express.json());

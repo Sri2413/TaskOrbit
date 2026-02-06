@@ -17,7 +17,7 @@ export default function Register() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/signup",
+        "https://taskorbit-2.onrender.com/api/auth/signup",
         {
           name,
           email,

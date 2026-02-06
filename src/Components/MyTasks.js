@@ -18,7 +18,7 @@ export default function MyTasks() {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await axios.get("http://localhost:5000/api/tasks", {
+      const res = await axios.get("https://taskorbit-2.onrender.com/api/tasks", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -34,7 +34,7 @@ export default function MyTasks() {
     try {
       const token = localStorage.getItem("token");
 
-      await axios.delete(`http://localhost:5000/api/tasks/${id}`, {
+      await axios.delete(`https://taskorbit-2.onrender.com/api/tasks/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -51,7 +51,7 @@ export default function MyTasks() {
       const token = localStorage.getItem("token");
 
       const res = await axios.put(
-        `http://localhost:5000/api/tasks/${editId}`,
+        `https://taskorbit-2.onrender.com/api/tasks/${editId}`,
         editData,
         {
           headers: {

@@ -8,12 +8,20 @@ const transporter = nodemailer.createTransport({
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
-  connectionTimeout: 10000, // 10s
-  greetingTimeout: 10000,
-  socketTimeout: 10000,
+  tls: {
+    rejectUnauthorized: false,
+  },
+  logger: true,
+  debug: true,
 });
 
-transporter.verify().then(() => console.log("Email server is ready"));
+transporter.verify((err, success) => {
+  if (err) {
+    console.error("SMTP VERIFY FAILED:", err);
+  } else {
+    console.log("EMAIL SERVER READY");
+  }
+});
 
 async function sendEmailRemainder(to, task) {
   try {
@@ -21,12 +29,20 @@ async function sendEmailRemainder(to, task) {
       from: `"TaskOrbit" <${process.env.EMAIL_USER}>`,
       to,
       subject: `⏰ Reminder: ${task.title}`,
-      html: `<p>${task.description}</p>`,
+      html: `
+        <div style="font-family:sans-serif">
+          <h3>Task Reminder</h3>
+          <p><b>Title:</b> ${task.title}</p>
+          <p><b>Description:</b> ${
+            task.description || "No description provided"
+          }</p>
+        </div>
+      `,
     });
+
     console.log("EMAIL SENT TO:", to);
   } catch (err) {
-    console.error("EMAIL FAILED:", err.message);
-    // ❗ DO NOT THROW
+    console.error("EMAIL FAILED:", err);
   }
 }
 
